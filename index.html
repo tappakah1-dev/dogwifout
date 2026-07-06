@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>$dogwifout — Dog Wif Out Supply | Fight the 65% Vamp Coins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,500&family=Jost:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          vintageBg: '#f2ece0',
+          panelBg: '#eae1cd',
+          deepBg: '#e2d7bd',
+          ink: '#26221b',
+          inkSoft: '#5c5445',
+          gold: '#a3812f',
+          goldDim: '#8a6c26',
+          vampRed: '#c23b3b',
+          packGreen: '#2a8754',
+          line: '#d8cbac'
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['Jost', 'sans-serif'],
+          mono: ['"Space Mono"', 'monospace'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body {
+    background-color: #f2ece0;
+    color: #26221b;
+  }
+  
+  /* Continuous crawling marquee */
+  .marquee-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+  }
+  .marquee-content {
+    display: inline-block;
+    padding-right: 2rem;
+    animation: marquee 25s linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+
+  /* Animated warning glow */
+  @keyframes warning-pulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+  }
+  .warning-glow {
+    animation: warning-pulse 2s infinite ease-in-out;
+  }
+
+  /* Custom audio visualizer nodes */
+  .visualizer-bar {
+    transition: height 0.1s ease;
+  }
+  
+  /* Smooth scroll utilities */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+</head>
+<body class="font-sans antialiased selection:bg-gold selection:text-white overflow-x-hidden">
+
+<!-- Top Ticker Bar -->
+<div class="bg-ink text-vintageBg py-2 text-xs font-semibold tracking-widest uppercase border-b border-line select-none marquee-wrapper" aria-hidden="true">
+  <div class="marquee-content">
+    <span class="mx-6 text-gold">⚡ FIGHT THE 65% VAMP COINS ⚡</span>
+    <span class="mx-6">$DOGWIFOUT — THE PACK WITHOUT THE INTRUDERS</span>
+    <span class="mx-6 text-gold">★ NO DEV ALLOCATION • NO SNIPER BOTS ★</span>
+    <span class="mx-6">THE DOG HAS NO WEALTHY INSIDER</span>
+    <span class="mx-6 text-gold">⚡ FIGHT THE 65% VAMP COINS ⚡</span>
+    <span class="mx-6">$DOGWIFOUT — THE PACK WITHOUT THE INTRUDERS</span>
+    <span class="mx-6 text-gold">★ NO DEV ALLOCATION • NO SNIPER BOTS ★</span>
+    <span class="mx-6">THE DOG HAS NO WEALTHY INSIDER</span>
+  </div>
+  <div class="marquee-content">
+    <span class="mx-6 text-gold">⚡ FIGHT THE 65% VAMP COINS ⚡</span>
+    <span class="mx-6">$DOGWIFOUT — THE PACK WITHOUT THE INTRUDERS</span>
+    <span class="mx-6 text-gold">★ NO DEV ALLOCATION • NO SNIPER BOTS ★</span>
+    <span class="mx-6">THE DOG HAS NO WEALTHY INSIDER</span>
+    <span class="mx-6 text-gold">⚡ FIGHT THE 65% VAMP COINS ⚡</span>
+    <span class="mx-6">$DOGWIFOUT — THE PACK WITHOUT THE INTRUDERS</span>
+    <span class="mx-6 text-gold">★ NO DEV ALLOCATION • NO SNIPER BOTS ★</span>
+    <span class="mx-6">THE DOG HAS NO WEALTHY INSIDER</span>
+  </div>
+</div>
+
+<!-- Header and Navigation -->
+<header class="border-b border-line py-5 px-4 md:px-8 bg-vintageBg sticky top-0 z-40 backdrop-blur-md bg-opacity-95">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <!-- Brand Title -->
+    <div class="flex items-center gap-3">
+      <a href="#" class="text-2xl font-serif font-bold tracking-tight text-ink hover:opacity-90">
+        $dogwif<span class="text-gold italic">out</span>
+      </a>
+      <span class="hidden sm:inline-block bg-ink text-vintageBg px-2 py-0.5 text-[10px] font-mono rounded tracking-widest uppercase">
+        SUPPLY FREE
+      </span>
+    </div>
+
+    <!-- Contract Address Box -->
+    <div class="flex items-center w-full md:w-auto bg-panelBg border border-line rounded p-1.5 pl-3 gap-2 max-w-md shadow-inner">
+      <span class="text-[10px] font-mono text-gold font-bold uppercase tracking-wider select-none">CA:</span>
+      <code class="font-mono text-xs text-inkSoft truncate select-all flex-1" id="ca-code-text">CJCrQsBL4rAwmGEcEv2dzNER5mYRFEzjwN5CWKz1fqou</code>
+      <button 
+        onclick="copyContractAddress('ca-code-text', this)" 
+        class="bg-ink hover:bg-gold text-vintageBg text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded transition-all duration-150 shrink-0"
+        title="Copy Contract Address"
+      >
+        Copy CA
+      </button>
+    </div>
+
+    <!-- Social & Fight Center Controls -->
+    <div class="flex items-center gap-4">
+      <!-- Custom Synth Audio Toggle -->
+      <button id="synth-mute-btn" onclick="toggleMute()" class="p-2 border border-line rounded hover:bg-panelBg transition text-inkSoft hover:text-ink relative flex items-center justify-center" title="Toggle Sound Synth System">
+        <!-- Speaker Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path id="volume-arc-1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path id="volume-arc-2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+        <span class="absolute -top-1 -right-1 bg-gold w-2.5 h-2.5 rounded-full flex items-center justify-center animate-ping"></span>
+      </button>
+
+      <!-- Telegram -->
+      <a href="https://t.me/" target="_blank" class="p-2 border border-line rounded hover:bg-panelBg transition text-inkSoft hover:text-ink" title="Join Telegram Group">
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.94-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.37.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .24z"/>
+        </svg>
+      </a>
+
+      <!-- Twitter / X -->
+      <a href="https://x.com/" target="_blank" class="p-2 border border-line rounded hover:bg-panelBg transition text-inkSoft hover:text-ink" title="Follow on X / Twitter">
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+
+      <!-- Quick Swap (Jupiter) -->
+      <a href="https://jup.ag/" target="_blank" class="hidden sm:inline-block bg-gold hover:bg-goldDim text-vintageBg font-bold text-xs uppercase tracking-wider py-2 px-4 rounded transition-all shadow" title="Swap via Jupiter">
+        Trade Now
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Popups and Custom Toast Alerts (No alerts rule) -->
+<div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+
+<!-- Hero Section / Editorial Banner -->
+<section class="py-12 md:py-20 border-b border-line relative overflow-hidden">
+  <!-- Subtle Vintage Grid Background Lines -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.03] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  
+  <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+    <span class="inline-block bg-vampRed/10 border border-vampRed/30 text-vampRed font-mono font-semibold tracking-widest text-[11px] uppercase rounded-full px-4 py-1 mb-6 animate-pulse">
+      ⚠️ EMERGENCY NOTICE TO DEGENS
+    </span>
+
+    <!-- Hero Banner Image Area -->
+    <div class="relative group max-w-3xl mx-auto mb-10 overflow-hidden rounded border border-line shadow-2xl bg-panelBg">
+      <img 
+        src="https://i.ibb.co/BVtq759c/Gemini-Generated-Image-t9zfz9t9zfz9t9zf.png" 
+        alt="Dog Wif Out Supply banner" 
+        class="w-full object-cover aspect-[21/9] filter brightness-95 group-hover:scale-105 transition duration-700"
+        onerror="this.src='https://placehold.co/800x340/eae1cd/26221b?text=Dog+Wif+Out+Supply'"
+      />
+      <!-- Dynamic live banner watermark counter -->
+      <div class="absolute bottom-3 left-3 bg-ink/90 text-vintageBg px-3 py-1 text-[11px] font-mono tracking-widest uppercase rounded flex items-center gap-2 border border-line/40">
+        <span class="w-2 h-2 rounded-full bg-vampRed animate-ping"></span>
+        <span>ESTIMATED DUMPS TODAY: <span id="sol-drained-counter" class="text-gold font-bold">14,234</span> SOL</span>
+      </div>
+    </div>
+
+    <!-- Editorial Typography Title -->
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-ink leading-tight">
+      Fight the <br class="sm:hidden">
+      <span class="relative inline-block text-vampRed italic">
+        65% Vamp
+        <span class="absolute left-0 bottom-1 w-full h-[6px] bg-vampRed/20 -rotate-1"></span>
+      </span> 
+      Coins.
+    </h1>
+
+    <p class="mt-8 text-lg md:text-xl text-inkSoft font-light leading-relaxed max-w-2xl mx-auto">
+      Every week, another shiny deployer drains retail before your transaction even settles on the chart. One master wallet, <strong>65% of supply inside block zero</strong>, gone in 10 minutes. 
+      <span class="text-ink font-semibold">$dogwifout</span> is the pack's direct revolt. Out supply. Out vamps.
+    </p>
+
+    <!-- CTAs with Dynamic Sounds integration -->
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a 
+        href="#chart" 
+        onclick="playSynth('pump')" 
+        class="bg-ink hover:bg-gold hover:-translate-y-0.5 text-vintageBg font-bold text-sm tracking-widest uppercase py-4 px-8 rounded border border-ink transition-all shadow-lg"
+      >
+        View Interactive Chart
+      </a>
+      <a 
+        href="#simulator" 
+        onclick="playSynth('warning')" 
+        class="bg-transparent hover:bg-panelBg hover:-translate-y-0.5 text-inkSoft hover:text-ink font-bold text-sm tracking-widest uppercase py-4 px-8 rounded border border-line transition-all"
+      >
+        Vamp Simulator Demo
+      </a>
+    </div>
+
+    <!-- Decorative Diamond Rule Divider -->
+    <div class="flex items-center justify-center gap-4 mt-16 max-w-xs mx-auto">
+      <div class="h-[1px] bg-line flex-1"></div>
+      <div class="w-2.5 h-2.5 bg-gold rotate-45"></div>
+      <div class="h-[1px] bg-line flex-1"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Trench Simulator Section -->
+<section id="simulator" class="py-16 bg-panelBg border-b border-line">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-gold font-mono font-semibold tracking-widest text-xs uppercase block mb-3">Live Trench Battleground Demo</span>
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-ink mb-4">Vamp Coin vs. Fair Pack Launch</h2>
+      <p class="text-inkSoft text-sm md:text-base">
+        Click either button below to simulate how the block-0 bots and vampire developer wallets eat your SOL instantly versus the organic, decentralized growth of $dogwifout.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Simulator Control Panel Column (4 cols) -->
+      <div class="lg:col-span-5 bg-vintageBg border border-line p-6 rounded flex flex-col justify-between shadow-sm">
+        <div>
+          <h3 class="font-serif text-xl font-bold text-ink mb-3 pb-3 border-b border-line">Simulation Terminal</h3>
+          <p class="text-xs text-inkSoft mb-5 leading-relaxed">
+            Trigger a <strong>Vamp Launch</strong> to watch how a 65% holder drains the chart during initial buying pressure, or select a <strong>Fair Launch</strong> to experience distributed tokenomics.
+          </p>
+
+          <div class="space-y-4">
+            <!-- Launch Button: Vamp -->
+            <button 
+              id="sim-vamp-btn" 
+              onclick="startSimulation('vamp')"
+              class="w-full bg-vampRed hover:bg-red-800 text-vintageBg font-bold text-xs tracking-widest uppercase py-4 px-4 rounded transition flex items-center justify-center gap-3 shadow"
+            >
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              Simulate 65% Vamp Launch
+            </button>
+
+            <!-- Launch Button: Fair -->
+            <button 
+              id="sim-fair-btn" 
+              onclick="startSimulation('fair')"
+              class="w-full bg-packGreen hover:bg-green-800 text-vintageBg font-bold text-xs tracking-widest uppercase py-4 px-4 rounded transition flex items-center justify-center gap-3 shadow"
+            >
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+              </span>
+              Simulate $dogwifout Fair Launch
+            </button>
+          </div>
+        </div>
+
+        <!-- Terminal Output / Event Log -->
+        <div class="mt-8">
+          <span class="text-[10px] font-mono text-inkSoft tracking-widest uppercase block mb-2">Live Transaction Feed:</span>
+          <div id="sim-log-box" class="bg-ink text-vintageBg p-4 rounded text-xs font-mono h-40 overflow-y-auto border border-line flex flex-col gap-1.5 scrollbar-thin">
+            <div class="text-gold">// Ready for transmission. Select a simulation above.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulator Visualizer Chart Column (7 cols) -->
+      <div class="lg:col-span-7 bg-ink text-vintageBg p-6 rounded border border-line flex flex-col justify-between shadow-xl relative min-h-[400px]">
+        <!-- Alert Banner Inside Simulator -->
+        <div id="sim-status-banner" class="absolute inset-x-6 top-6 bg-vintageBg/10 border border-vintageBg/20 text-vintageBg py-2.5 px-4 rounded text-xs font-mono flex items-center justify-between transition-all duration-300">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500 animate-pulse"></span>
+            <span id="sim-status-title">Status: Awaiting launch sequence</span>
+          </div>
+          <span id="sim-pool-cap" class="text-gold font-bold">POOL: 100 SOL</span>
+        </div>
+
+        <!-- Custom Graphic Chart Render Space -->
+        <div class="flex-1 flex items-end justify-center h-48 mt-12 mb-4 relative px-4">
+          <!-- Price Graph Line Path Overlay using pure CSS divs or absolute plots -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
+            <div class="w-full border-t border-dashed border-vintageBg/10"></div>
+          </div>
+
+          <!-- Dynamic chart bars rendering simulation values -->
+          <div class="w-full h-full flex items-end justify-between gap-1 sm:gap-2 pt-10" id="sim-chart-bars-container">
+            <!-- Simulated bar columns will be injected here via Javascript dynamically -->
+            <div class="flex-1 bg-vintageBg/20 h-[10%] rounded-t transition-all duration-300"></div>
+            <div class="flex-1 bg-vintageBg/20 h-[12%] rounded-t transition-all duration-300"></div>
+            <div class="flex-1 bg-vintageBg/20 h-[15%] rounded-t transition-all duration-300"></div>
+            <div class="flex-1 bg-vintageBg/20 h-[20%] rounded-t transition-all duration-300"></div>
+            <div class="flex-1 bg-vintageBg/20 h-[25%] rounded-t transition-all duration-300"></div>
+            <div class="flex-1 bg-vintageBg/20 h-[30%] rounded-t transition-all duration-300"></div>
+            <div class="flex-1 bg-vintageBg/20 h-[35%] rounded-t transition-all duration-300"></div>
+            <div class="flex-1 bg-vintageBg/20 h-[32%] rounded-t transition-all duration-300"></div>
+            <div class="flex-1 bg-vintageBg/20 h-[38%] rounded-t transition-all duration-300"></div>
+            <div class="flex-1 bg-vintageBg/20 h-[45%] rounded-t transition-all duration-300"></div>
+          </div>
+
+          <!-- Massive central feedback labels -->
+          <div id="sim-feedback-overlay" class="absolute inset-0 flex flex-col items-center justify-center bg-ink/90 hidden text-center p-4">
+            <span id="sim-overlay-icon" class="text-4xl mb-2">💸</span>
+            <h4 id="sim-overlay-title" class="text-lg font-bold uppercase tracking-widest font-mono text-vampRed">Insiders Fed!</h4>
+            <p id="sim-overlay-desc" class="text-xs text-vintageBg/70 max-w-xs mt-1">One wallet dumped 65% allocation into liquidity. Dev ran away.</p>
+          </div>
+        </div>
+
+        <!-- Simulator Legend details -->
+        <div class="border-t border-vintageBg/10 pt-4 flex items-center justify-between flex-wrap gap-4 text-xs font-mono text-vintageBg/60">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 bg-vampRed rounded-sm"></span>
+            <span>Developer dump zone</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 bg-packGreen rounded-sm"></span>
+            <span>$dogwifout Pack accumulation</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 bg-gold rounded-sm"></span>
+            <span>Organic Retail Volume</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Movement Band — Editorial Columns -->
+<section class="py-16 md:py-24 border-b border-line bg-vintageBg">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+      
+      <!-- Left Column: Manifesto -->
+      <div class="space-y-6">
+        <span class="text-gold font-mono font-semibold tracking-widest text-xs uppercase block">The Rebel Pack</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-ink leading-tight">
+          This is not another cute dog.
+        </h2>
+        
+        <!-- Retro Divider with diamond -->
+        <div class="flex items-center gap-3 max-w-[180px]">
+          <div class="h-[1px] bg-line flex-1"></div>
+          <div class="w-2 h-2 bg-gold rotate-45"></div>
+          <div class="h-[1px] bg-line flex-1"></div>
+        </div>
+
+        <p class="text-sm text-inkSoft leading-relaxed">
+          We refused to make another project where a single developer sits quietly on a secondary burner waiting to click "Liquidate." $dogwifout is about clean charts, decentralized community power, and absolutely zero compromises.
+        </p>
+
+        <ul class="space-y-3 pt-2">
+          <li class="flex items-start gap-2.5 text-xs font-mono uppercase text-inkSoft">
+            <span class="text-gold">✔</span> The dog does not wear a silly hat.
+          </li>
+          <li class="flex items-start gap-2.5 text-xs font-mono uppercase text-inkSoft">
+            <span class="text-gold">✔</span> The dog has no developer backdoors.
+          </li>
+          <li class="flex items-start gap-2.5 text-xs font-mono uppercase text-inkSoft">
+            <span class="text-gold">✔</span> The dog cannot be blacklisted by an owner.
+          </li>
+        </ul>
+      </div>
+
+      <!-- Center Column: Visual Graphic Banner -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gold rounded blur opacity-10 group-hover:opacity-20 transition duration-500"></div>
+        <div class="relative border border-line p-3 bg-panelBg rounded shadow-md">
+          <img 
+            class="w-full object-cover aspect-[4/5] rounded" 
+            src="https://i.ibb.co/BVtq759c/Gemini-Generated-Image-t9zfz9t9zfz9t9zf.png" 
+            alt="Dog Wif Out Supply mascot illustration"
+            onerror="this.src='https://placehold.co/400x500/eae1cd/26221b?text=Dog+Wif+Out+Supply'"
+          >
+          <div class="mt-3 text-center">
+            <span class="font-serif italic text-xs text-gold font-semibold">"Wifout centralized wallets. Wifout a master key."</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Contrast Manifesto -->
+      <div class="space-y-6">
+        <span class="text-vampRed font-mono font-semibold tracking-widest text-xs uppercase block">The Blood Suckers</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-ink leading-tight">
+          How they trap you.
+        </h2>
+        
+        <div class="flex items-center gap-3 max-w-[180px]">
+          <div class="h-[1px] bg-line flex-1"></div>
+          <div class="w-2 h-2 bg-vampRed rotate-45"></div>
+          <div class="h-[1px] bg-line flex-1"></div>
+        </div>
+
+        <p class="text-sm text-inkSoft leading-relaxed">
+          Traditional pump and dump coins launch on automated token bonding curves, then instantly sniper-buy 65% using bundled block transactions. By the time you view the token on Dexscreener, you are buying a pre-allocated exit scam.
+        </p>
+
+        <ul class="space-y-3 pt-2">
+          <li class="flex items-start gap-2.5 text-xs font-mono uppercase text-inkSoft">
+            <span class="text-vampRed">✖</span> Draining the pool using creator fees.
+          </li>
+          <li class="flex items-start gap-2.5 text-xs font-mono uppercase text-inkSoft">
+            <span class="text-vampRed">✖</span> Paying influencers from the 65% wallet.
+          </li>
+          <li class="flex items-start gap-2.5 text-xs font-mono uppercase text-inkSoft">
+            <span class="text-vampRed">✖</span> Generating fake volume via master bundles.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Deep Lore Section -->
+<section class="py-16 md:py-24 border-b border-line bg-panelBg">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+      
+      <!-- Narrative Manifest text (7 cols) -->
+      <div class="md:col-span-7 space-y-6">
+        <span class="text-gold font-mono font-semibold tracking-widest text-xs uppercase block">THE MANIFESTO</span>
+        <h2 class="text-4xl font-serif font-bold text-ink leading-tight">
+          Where did the supply go? <span class="text-gold italic">Wifout.</span>
+        </h2>
+        <p class="text-inkSoft leading-relaxed text-base">
+          They called them <strong>Vamp Coins</strong>. A fitting name for contracts deployed in the dark of night, designed to suck the liquidity of unsuspecting degens until only dry dust and empty folders remain.
+        </p>
+        <p class="text-inkSoft leading-relaxed text-sm">
+          A small elite class of deployer addresses used complex scripting systems to frontrun their own liquidity pools, capturing up to two-thirds of the total outstanding supply. They sat on these massive blocks of coins, dripping small fractions of percentages daily, creating a illusion of community volume.
+        </p>
+        <blockquote class="border-l-2 border-gold pl-4 py-1 my-4 italic text-ink text-sm bg-vintageBg/50 p-3 rounded">
+          "The chart pumps only for as long as it takes the developer's core bot wallet to trigger the absolute liquidation function. We refuse to be food."
+        </blockquote>
+        <p class="text-inkSoft leading-relaxed text-sm">
+          <strong>$dogwifout</strong> stands as a pure public declaration of financial sovereignty in meme spaces. We launched with zero allocated reserves. No hidden addresses. No multi-sig vamps waiting behind the curtain.
+        </p>
+      </div>
+
+      <!-- Retro Newspaper card element (5 cols) -->
+      <div class="md:col-span-5 bg-vintageBg border border-line p-6 rounded shadow-lg space-y-4">
+        <span class="text-[10px] font-mono text-inkSoft tracking-widest uppercase block border-b border-line pb-2">THE DEFI DAILY REPORT</span>
+        <h3 class="font-serif text-2xl font-bold italic text-ink leading-none">The De-Fi Bloodsuckers Excluded</h3>
+        <p class="text-xs text-inkSoft leading-relaxed">
+          Recent blockchain analysis reveals that 92% of new coin listings are controlled by less than 4 connected wallet clusters. These clusters coordinate artificial buy volumes to reach the main page of prominent indexes.
+        </p>
+        <div class="bg-panelBg p-4 rounded border border-line text-xs font-mono space-y-2">
+          <div class="text-gold font-bold uppercase tracking-wider">The Oath of $dogwifout</div>
+          <p class="text-inkSoft text-[11px] leading-relaxed">
+            "We inspect top holders before we look at the chart. We flag 65% wallets in every telegram channel. We protect the pack."
+          </p>
+        </div>
+        <span class="text-[9px] font-mono text-inkSoft block text-right">— Passed down in the trench chatrooms</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Interactive Allocation Danger Meter Section -->
+<section class="py-16 bg-vintageBg border-b border-line">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-vampRed font-mono font-semibold tracking-widest text-xs uppercase block mb-3">Live Risk Evaluation Tool</span>
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-ink mb-4">The Danger Level Calculator</h2>
+      <p class="text-inkSoft text-sm md:text-base">
+        Drag the slider below to represent the percentage of supply bought by the developers and snipers at launch, and see the real-time safety rating.
+      </p>
+    </div>
+
+    <!-- The Interactive Calculator Box -->
+    <div class="bg-panelBg border border-line p-8 rounded shadow-lg">
+      <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+        <div class="text-center md:text-left">
+          <span class="text-[11px] font-mono text-inkSoft tracking-widest uppercase block">Selected Developer Allocation:</span>
+          <div class="text-4xl font-serif font-bold text-ink"><span id="danger-percentage-label">65</span>%</div>
+        </div>
+        <div class="bg-vintageBg border border-line py-3 px-6 rounded text-center min-w-[200px]" id="danger-status-card">
+          <span class="text-[10px] font-mono text-inkSoft tracking-widest uppercase block mb-1">Safety Assessment:</span>
+          <span id="danger-status-text" class="text-vampRed font-bold font-mono text-lg uppercase tracking-wider">Vamp State 🩸</span>
+        </div>
+      </div>
+
+      <!-- Slider input -->
+      <div class="space-y-4">
+        <input 
+          type="range" 
+          id="danger-slider" 
+          min="0" 
+          max="100" 
+          value="65" 
+          oninput="updateDangerMeter(this.value)"
+          class="w-full h-3 bg-deepBg rounded-lg appearance-none cursor-pointer accent-ink"
+        >
+        <div class="flex justify-between text-xs font-mono text-inkSoft">
+          <span>0% (Fair Launch)</span>
+          <span>50% (Siphoned)</span>
+          <span>100% (Absolute Rug)</span>
+        </div>
+      </div>
+
+      <!-- Detailed Meter Warning Card -->
+      <div class="mt-8 p-4 bg-vintageBg border-l-4 border-vampRed rounded text-sm text-inkSoft flex items-start gap-3" id="danger-warning-card">
+        <span class="text-lg" id="danger-warning-emoji">🚨</span>
+        <div>
+          <strong id="danger-warning-title" class="text-ink block mb-1">Extremely High Danger: Vampire Attack Active</strong>
+          <p id="danger-warning-desc" class="text-xs leading-relaxed">
+            One single centralized entity holds 65% of the coins. They can exit liquidity at any millisecond of their choosing, sending your wallet balance to zero. Avoid this.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tokenomics Grid -->
+<section class="py-16 md:py-24 border-b border-line bg-panelBg">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-gold font-mono font-semibold tracking-widest text-xs uppercase block mb-3">EXCELLENT DISTRIBUTION</span>
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-ink mb-4">Pack Tokenomics</h2>
+      <p class="text-inkSoft text-sm md:text-base">
+        A completely clean system structured directly to protect the value.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      
+      <!-- Card 1 -->
+      <div class="bg-vintageBg border border-line p-6 rounded text-center shadow-sm hover:shadow-md transition">
+        <div class="text-4xl font-serif font-bold text-gold">0%</div>
+        <div class="text-[10px] font-mono text-inkSoft uppercase tracking-widest mt-2">Team Allocation</div>
+        <p class="text-[11px] text-inkSoft/70 mt-2 leading-tight">We buy directly alongside you in open trench trenches.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-vintageBg border border-line p-6 rounded text-center shadow-sm hover:shadow-md transition">
+        <div class="text-4xl font-serif font-bold text-gold">0%</div>
+        <div class="text-[10px] font-mono text-inkSoft uppercase tracking-widest mt-2">Transaction Taxes</div>
+        <p class="text-[11px] text-inkSoft/70 mt-2 leading-tight">Buy, Sell, Swap freely. Zero secret developer cuts.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-vintageBg border border-line p-6 rounded text-center shadow-sm hover:shadow-md transition">
+        <div class="text-4xl font-serif font-bold text-gold">100%</div>
+        <div class="text-[10px] font-mono text-inkSoft uppercase tracking-widest mt-2">Fair Liquidity</div>
+        <p class="text-[11px] text-inkSoft/70 mt-2 leading-tight">All supply distributed on launch without exceptions.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-vintageBg border border-line p-6 rounded text-center shadow-sm hover:shadow-md transition">
+        <div class="text-4xl font-serif font-bold text-gold">SOL</div>
+        <div class="text-[10px] font-mono text-inkSoft uppercase tracking-widest mt-2">Solana Chain</div>
+        <p class="text-[11px] text-inkSoft/70 mt-2 leading-tight">Lightning-fast transaction speed, microscopic gas fees.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- How to Buy Section -->
+<section id="buy" class="py-16 md:py-24 border-b border-line bg-vintageBg">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-gold font-mono font-semibold tracking-widest text-xs uppercase block mb-3">HOW TO JOIN</span>
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-ink mb-4">Steps to Buy $dogwifout</h2>
+      <p class="text-inkSoft text-sm md:text-base">
+        A quick guide for degens tired of blood-sucking coins.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Step 1 -->
+      <div class="border border-line bg-panelBg p-8 rounded relative shadow-sm hover:scale-[1.01] transition-transform duration-200">
+        <span class="font-serif italic text-6xl text-gold/30 absolute right-4 top-2 select-none">01</span>
+        <h3 class="font-serif text-xl font-bold text-ink mb-3 mt-4">Generate Wallet</h3>
+        <p class="text-xs text-inkSoft leading-relaxed">
+          Install the <strong>Phantom</strong> or Solflare app on your phone, or desktop browser. Fund your newly created wallet with native Solana (SOL) from any tier-1 digital exchange.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="border border-line bg-panelBg p-8 rounded relative shadow-sm hover:scale-[1.01] transition-transform duration-200">
+        <span class="font-serif italic text-6xl text-gold/30 absolute right-4 top-2 select-none">02</span>
+        <h3 class="font-serif text-xl font-bold text-ink mb-3 mt-4">Connect to DEX</h3>
+        <p class="text-xs text-inkSoft leading-relaxed">
+          Open a decentralized exchange like <strong>Jupiter (jup.ag)</strong> or Raydium in your browser. Connect your secure web3 wallet directly to load the liquid asset exchange pair interface.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="border border-line bg-panelBg p-8 rounded relative shadow-sm hover:scale-[1.01] transition-transform duration-200">
+        <span class="font-serif italic text-6xl text-gold/30 absolute right-4 top-2 select-none">03</span>
+        <h3 class="font-serif text-xl font-bold text-ink mb-3 mt-4">Swap SOL for Dog</h3>
+        <p class="text-xs text-inkSoft leading-relaxed">
+          Paste our official Contract Address into the bottom token search input field. Select the slippage value that fits current market volatility, click Swap, and welcome to the pack!
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Live Chart Section -->
+<section id="chart" class="py-16 md:py-24 border-b border-line bg-panelBg">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10">
+      <div>
+        <span class="text-gold font-mono font-semibold tracking-widest text-xs uppercase block mb-3">CHART ANALYSIS</span>
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-ink">Watch The Pack Real-Time</h2>
+      </div>
+      <div class="flex gap-4">
+        <!-- Social link shortcut badges -->
+        <a href="https://dexscreener.com" target="_blank" class="border border-line hover:border-gold py-2 px-4 rounded text-xs font-mono uppercase font-bold tracking-wider text-inkSoft hover:text-ink transition flex items-center gap-2 bg-vintageBg">
+          <span>Dexscreener</span>
+          <span class="text-gold">↗</span>
+        </a>
+        <a href="https://dextools.io" target="_blank" class="border border-line hover:border-gold py-2 px-4 rounded text-xs font-mono uppercase font-bold tracking-wider text-inkSoft hover:text-ink transition flex items-center gap-2 bg-vintageBg">
+          <span>Dextools</span>
+          <span class="text-gold">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Dexscreener Embed Component Frame -->
+    <div class="bg-vintageBg border border-line rounded p-2 shadow-2xl relative">
+      <!-- Embedded Chart CSS Aspect Ratio wrapper -->
+      <style>
+        #dexscreener-embed {
+          position: relative;
+          width: 100%;
+          padding-bottom: 125%;
+        }
+        @media(min-width:1400px) {
+          #dexscreener-embed {
+            padding-bottom: 65%;
+          }
+        }
+        #dexscreener-embed iframe {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          border: 0;
+        }
+      </style>
+      <div id="dexscreener-embed" class="rounded overflow-hidden">
+        <iframe src="https://dexscreener.com/solana/5nFRogAyxq3rVJJLQ2HJh7BQx4zuYGkcbSGtc2BGzjn9?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=15"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-16 bg-ink text-vintageBg relative">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pb-12 border-b border-vintageBg/10">
+      
+      <!-- Brand & Description -->
+      <div class="md:col-span-6 space-y-3">
+        <div class="text-2xl font-serif font-bold tracking-tight text-vintageBg">
+          $dogwif<span class="text-gold italic">out</span>
+        </div>
+        <p class="text-xs text-vintageBg/60 leading-relaxed max-w-sm">
+          A decentralized public movement fighting against manipulative developer allocations in the Solana ecosystem. Powered entirely by the pack.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="md:col-span-3 space-y-2 text-xs font-mono">
+        <div class="text-gold uppercase tracking-widest font-bold mb-1">Index</div>
+        <a href="#" class="block text-vintageBg/70 hover:text-vintageBg">Back to Top</a>
+        <a href="#simulator" class="block text-vintageBg/70 hover:text-vintageBg">Vamp Simulator</a>
+        <a href="#buy" class="block text-vintageBg/70 hover:text-vintageBg">Buy Guide</a>
+        <a href="#chart" class="block text-vintageBg/70 hover:text-vintageBg">Live Chart</a>
+      </div>
+
+      <!-- Outlets -->
+      <div class="md:col-span-3 space-y-2 text-xs font-mono">
+        <div class="text-gold uppercase tracking-widest font-bold mb-1">Community</div>
+        <a href="https://x.com/" target="_blank" class="block text-vintageBg/70 hover:text-vintageBg">X Twitter</a>
+        <a href="https://t.me/" target="_blank" class="block text-vintageBg/70 hover:text-vintageBg">Telegram</a>
+        <a href="https://solscan.io/" target="_blank" class="block text-vintageBg/70 hover:text-vintageBg">Solscan Explorer</a>
+      </div>
+
+    </div>
+
+    <!-- Secondary CA bar for easy copy in footer -->
+    <div class="py-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-vintageBg/10">
+      <div class="text-center sm:text-left">
+        <span class="text-[10px] font-mono text-vintageBg/40 uppercase tracking-widest block">Contract Address</span>
+        <code class="text-xs font-mono text-gold tracking-tight" id="ca-footer-text">CJCrQsBL4rAwmGEcEv2dzNER5mYRFEzjwN5CWKz1fqou</code>
+      </div>
+      <button 
+        onclick="copyContractAddress('ca-footer-text', this)" 
+        class="bg-vintageBg/10 hover:bg-gold hover:text-ink text-vintageBg text-[10px] font-mono tracking-widest uppercase py-2.5 px-6 rounded transition"
+      >
+        Copy CA
+      </button>
+    </div>
+
+    <!-- Disclaimer Fine Print -->
+    <div class="pt-8 text-center sm:text-left space-y-4">
+      <p class="text-[10px] text-vintageBg/40 leading-relaxed">
+        <strong>LEGAL DISCLAIMER:</strong> $dogwifout is an independent cryptographic meme token with zero intrinsic value, no formal backing, and no technical utility. It does not possess any core developer team or expectations of structured financial gains. Purchasing this asset is strictly intended for high-variance entertainment purposes only. Always inspect the smart contract ecosystem before participating.
+      </p>
+      <p class="text-[11px] text-vintageBg/30 font-mono">
+        © 2026 $dogwifout. All rights reserved. Created in defense of the decentralized pack.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Interactive Script Logic -->
+<script>
+  // Mute audio synthesis flag
+  let isMuted = true;
+  let audioCtx = null;
+
+  // Web Audio Synthesizer for Retro Game Style Meme SFX (no external links used)
+  function initAudio() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+  }
+
+  function toggleMute() {
+    isMuted = !isMuted;
+    initAudio();
+    
+    const muteBtn = document.getElementById('synth-mute-btn');
+    const volumeArc1 = document.getElementById('volume-arc-1');
+    const volumeArc2 = document.getElementById('volume-arc-2');
+    
+    if (isMuted) {
+      volumeArc1.style.display = 'none';
+      volumeArc2.style.display = 'none';
+      showToast('Sound synth muted!', 'warning');
+    } else {
+      volumeArc1.style.display = 'block';
+      volumeArc2.style.display = 'block';
+      showToast('Sound synth active! Turn up your volume 🔊', 'success');
+      playSynth('pump');
+    }
+  }
+
+  function playSynth(type) {
+    if (isMuted) return;
+    initAudio();
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+
+    if (type === 'pump') {
+      // Pleasant rising sweep
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(150, now);
+      osc.frequency.exponentialRampToValueAtTime(800, now + 0.4);
+      gainNode.gain.setValueAtTime(0.15, now);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+      osc.start(now);
+      osc.stop(now + 0.4);
+    } else if (type === 'warning') {
+      // Aggressive warning drop pitch
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(600, now);
+      osc.frequency.linearRampToValueAtTime(100, now + 0.5);
+      gainNode.gain.setValueAtTime(0.12, now);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+      osc.start(now);
+      osc.stop(now + 0.5);
+    } else if (type === 'rug') {
+      // Dramatic explosion sound
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(120, now);
+      osc.frequency.linearRampToValueAtTime(40, now + 0.8);
+      gainNode.gain.setValueAtTime(0.2, now);
+      gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+      osc.start(now);
+      osc.stop(now + 0.8);
+    }
+  }
+
+  // Toast alert engine
+  function showToast(message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    
+    toast.className = `p-4 rounded-lg shadow-lg border text-xs font-mono pointer-events-auto transition-all duration-300 transform translate-y-2 opacity-0 flex items-center justify-between min-w-[280px]`;
+    
+    if (type === 'success') {
+      toast.className += ' bg-panelBg text-ink border-gold';
+    } else if (type === 'warning') {
+      toast.className += ' bg-vampRed text-vintageBg border-red-900';
+    } else {
+      toast.className += ' bg-ink text-vintageBg border-line';
+    }
+    
+    toast.innerHTML = `
+      <div class="flex items-center gap-2">
+        <span>${type === 'success' ? '🐕' : '🩸'}</span>
+        <span>${message}</span>
+      </div>
+      <button onclick="this.parentElement.remove()" class="text-[10px] ml-4 font-bold hover:opacity-50">✕</button>
+    `;
+    
+    container.appendChild(toast);
+    
+    // Animate in
+    setTimeout(() => {
+      toast.classList.remove('translate-y-2', 'opacity-0');
+    }, 10);
+    
+    // Auto-destruct
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'translate-y-2');
+      setTimeout(() => toast.remove(), 300);
+    }, 4000);
+  }
+
+  // Bulletproof clipboard mechanism
+  function copyContractAddress(elementId, button) {
+    const textToCopy = document.getElementById(elementId).textContent.trim();
+    
+    // Create temporary input to solve cross-origin iframe copy limitations
+    const tempInput = document.createElement('input');
+    tempInput.value = textToCopy;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999); // For mobile devices
+    
+    try {
+      const successful = document.execCommand('copy');
+      if (successful) {
+        showToast('Contract Address Copied to Clipboard!');
+        const originalText = button.textContent;
+        button.textContent = 'COPIED!';
+        button.classList.add('bg-gold');
+        playSynth('pump');
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.classList.remove('bg-gold');
+        }, 2000);
+      } else {
+        throw new Error('Fallback failed');
+      }
+    } catch (err) {
+      // Fallback try with modern navigator API
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          showToast('Contract Address Copied!');
+        }).catch(() => {
+          showToast('Copy failed. Please manually select the CA.', 'warning');
+        });
+      } else {
+        showToast('Copy failed. Please manually select the CA.', 'warning');
+      }
+    }
+    document.body.removeChild(tempInput);
+  }
+
+  // Live counter simulation (Ticks up every few seconds represent SOL drained globally by vamps)
+  let solDrained = 14234;
+  setInterval(() => {
+    const increment = Math.floor(Math.random() * 3) + 1;
+    solDrained += increment;
+    document.getElementById('sol-drained-counter').textContent = solDrained.toLocaleString();
+  }, 4000);
+
+  // Danger Calculator Interactive Slider Logic
+  function updateDangerMeter(val) {
+    const label = document.getElementById('danger-percentage-label');
+    const statusCard = document.getElementById('danger-status-card');
+    const statusText = document.getElementById('danger-status-text');
+    
+    const warnCard = document.getElementById('danger-warning-card');
+    const warnEmoji = document.getElementById('danger-warning-emoji');
+    const warnTitle = document.getElementById('danger-warning-title');
+    const warnDesc = document.getElementById('danger-warning-desc');
+
+    label.textContent = val;
+
+    if (val < 10) {
+      statusText.textContent = "SAFE PACK 🐕";
+      statusText.className = "text-packGreen font-bold font-mono text-lg uppercase tracking-wider";
+      statusCard.className = "bg-vintageBg border border-packGreen/30 py-3 px-6 rounded text-center min-w-[200px]";
+      
+      warnCard.className = "mt-8 p-4 bg-vintageBg border-l-4 border-packGreen rounded text-sm text-inkSoft flex items-start gap-3";
+      warnEmoji.textContent = "🛡️";
+      warnTitle.textContent = "Pack Certified: Fair Launch Standard";
+      warnDesc.textContent = "No single entity controls the supply. Any price action is organic and determined exclusively by open market transactions.";
+    } else if (val >= 10 && val < 40) {
+      statusText.textContent = "Suspicious Pack ⚠️";
+      statusText.className = "text-yellow-600 font-bold font-mono text-lg uppercase tracking-wider";
+      statusCard.className = "bg-vintageBg border border-yellow-500/30 py-3 px-6 rounded text-center min-w-[200px]";
+      
+      warnCard.className = "mt-8 p-4 bg-vintageBg border-l-4 border-yellow-500 rounded text-sm text-inkSoft flex items-start gap-3";
+      warnEmoji.textContent = "👀";
+      warnTitle.textContent = "Medium Risk: Heavy Insiders Spotted";
+      warnDesc.textContent = "Developers or sniping groups hold between 10% and 40% of the token. They can execute high-volume coordinate dips, causing substantial slippage.";
+    } else {
+      statusText.textContent = "Vamp State 🩸";
+      statusText.className = "text-vampRed font-bold font-mono text-lg uppercase tracking-wider";
+      statusCard.className = "bg-vintageBg border border-vampRed/30 py-3 px-6 rounded text-center min-w-[200px]";
+      
+      warnCard.className = "mt-8 p-4 bg-vintageBg border-l-4 border-vampRed rounded text-sm text-inkSoft flex items-start gap-3";
+      warnEmoji.textContent = "🚨";
+      warnTitle.textContent = "Extremely High Danger: Vampire Attack Active";
+      warnDesc.textContent = "One single centralized entity holds most of the supply. They can exit liquidity pools at any second of their choosing, sending your wallet balance instantly to zero.";
+    }
+  }
+
+  // Interactive Live Trench Launch Simulator Logic
+  let simulationActive = false;
+  let simLogs = [];
+
+  function addSimLog(msg, type = 'info') {
+    const logBox = document.getElementById('sim-log-box');
+    const colorClass = type === 'success' ? 'text-packGreen' : type === 'error' ? 'text-vampRed' : type === 'gold' ? 'text-gold' : 'text-vintageBg/80';
+    
+    simLogs.push(`<div class="${colorClass}">[${new Date().toLocaleTimeString()}] ${msg}</div>`);
+    
+    if (simLogs.length > 25) simLogs.shift();
+    logBox.innerHTML = simLogs.join('');
+    logBox.scrollTop = logBox.scrollHeight;
+  }
+
+  function renderChart(barsData, activeType) {
+    const container = document.getElementById('sim-chart-bars-container');
+    container.innerHTML = '';
+    
+    barsData.forEach(h => {
+      const bar = document.createElement('div');
+      let color = 'bg-vintageBg/30';
+      if (activeType === 'vamp') color = 'bg-vampRed';
+      if (activeType === 'fair') color = 'bg-packGreen';
+      
+      bar.className = `flex-1 ${color} rounded-t transition-all duration-300`;
+      bar.style.height = `${h}%`;
+      container.appendChild(bar);
+    });
+  }
+
+  function startSimulation(type) {
+    if (simulationActive) {
+      showToast('Simulation already in progress. Please wait...', 'warning');
+      return;
+    }
+    
+    simulationActive = true;
+    simLogs = [];
+    document.getElementById('sim-feedback-overlay').classList.add('hidden');
+    
+    const statusTitle = document.getElementById('sim-status-title');
+    const poolCap = document.getElementById('sim-pool-cap');
+    const simVampBtn = document.getElementById('sim-vamp-btn');
+    const simFairBtn = document.getElementById('sim-fair-btn');
+
+    simVampBtn.disabled = true;
+    simFairBtn.disabled = true;
+    simVampBtn.classList.add('opacity-50');
+    simFairBtn.classList.add('opacity-50');
+
+    if (type === 'vamp') {
+      statusTitle.textContent = "LAUNCH SEQUENCE ACTIVE (VAMP)";
+      poolCap.textContent = "POOL: 10 SOL";
+      playSynth('warning');
+      runVampSim();
+    } else {
+      statusTitle.textContent = "LAUNCH SEQUENCE ACTIVE (FAIR)";
+      poolCap.textContent = "POOL: 10 SOL";
+      playSynth('pump');
+      runFairSim();
+    }
+  }
+
+  function runVampSim() {
+    let step = 0;
+    const bars = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
+    renderChart(bars, 'vamp');
+
+    const interval = setInterval(() => {
+      step++;
+      
+      if (step === 1) {
+        addSimLog("BLOCK ZERO: Token deployed on Solana.", 'info');
+        bars[0] = 12;
+        renderChart(bars, 'vamp');
+        playSynth('pump');
+      } 
+      else if (step === 2) {
+        addSimLog("BOT INTRUSION: Dev bundle address snipes 65% of supply.", 'error');
+        bars[1] = 20;
+        renderChart(bars, 'vamp');
+        playSynth('pump');
+      } 
+      else if (step === 3) {
+        addSimLog("RETAIL BUY: Degen #1 swaps 10 SOL for token.", 'info');
+        document.getElementById('sim-pool-cap').textContent = "POOL: 20 SOL";
+        bars[2] = 35;
+        renderChart(bars, 'vamp');
+        playSynth('pump');
+      } 
+      else if (step === 4) {
+        addSimLog("RETAIL BUY: Degen #2 swaps 25 SOL. Chart is green!", 'info');
+        document.getElementById('sim-pool-cap').textContent = "POOL: 45 SOL";
+        bars[3] = 60;
+        renderChart(bars, 'vamp');
+        playSynth('pump');
+      } 
+      else if (step === 5) {
+        addSimLog("FOMO BUY: Degen #3 swaps 50 SOL. Chart parabolic!", 'success');
+        document.getElementById('sim-pool-cap').textContent = "POOL: 95 SOL";
+        bars[4] = 85;
+        renderChart(bars, 'vamp');
+        playSynth('pump');
+      } 
+      else if (step === 6) {
+        addSimLog("WARNING: Developer triggers master exit.", 'error');
+        playSynth('warning');
+      } 
+      else if (step === 7) {
+        addSimLog("RUGPULL EVENT: Insider dumps 65% total supply into the pool!", 'error');
+        document.getElementById('sim-pool-cap').textContent = "POOL: 0.8 SOL";
+        bars[5] = 5;
+        bars[6] = 2;
+        bars[7] = 1;
+        bars[8] = 1;
+        bars[9] = 1;
+        renderChart(bars, 'vamp');
+        playSynth('rug');
+        
+        // Show overlay feedback
+        document.getElementById('sim-overlay-icon').textContent = "🩸";
+        document.getElementById('sim-overlay-title').textContent = "REKT BY VAMP!";
+        document.getElementById('sim-overlay-desc').textContent = "Insider wallet extracted 94 SOL instantly. Dev ran away. Classic 65% trap.";
+        document.getElementById('sim-feedback-overlay').classList.remove('hidden');
+        
+        clearInterval(interval);
+        resetSimButtons();
+      }
+    }, 1200);
+  }
+
+  function runFairSim() {
+    let step = 0;
+    const bars = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5];
+    renderChart(bars, 'fair');
+
+    const interval = setInterval(() => {
+      step++;
+      
+      if (step === 1) {
+        addSimLog("BLOCK ZERO: Token deployed on Solana.", 'info');
+        bars[0] = 10;
+        renderChart(bars, 'fair');
+        playSynth('pump');
+      } 
+      else if (step === 2) {
+        addSimLog("FAIR LAUNCH: 0% Reserved for team. Open distribution.", 'success');
+        bars[1] = 15;
+        renderChart(bars, 'fair');
+        playSynth('pump');
+      } 
+      else if (step === 3) {
+        addSimLog("PACK ACCUMULATION: Retail degens swap 15 SOL.", 'info');
+        document.getElementById('sim-pool-cap').textContent = "POOL: 25 SOL";
+        bars[2] = 24;
+        renderChart(bars, 'fair');
+        playSynth('pump');
+      } 
+      else if (step === 4) {
+        addSimLog("STABLE CHART: Top holder owns <3%. Zero dump risk.", 'success');
+        document.getElementById('sim-pool-cap').textContent = "POOL: 35 SOL";
+        bars[3] = 32;
+        renderChart(bars, 'fair');
+        playSynth('pump');
+      } 
+      else if (step === 5) {
+        addSimLog("COMMUNITY PUMP: Safe distribution attracts new buyers.", 'info');
+        document.getElementById('sim-pool-cap').textContent = "POOL: 65 SOL";
+        bars[4] = 48;
+        renderChart(bars, 'fair');
+        playSynth('pump');
+      } 
+      else if (step === 6) {
+        addSimLog("ORGANIC VOLUME: Trade volume matches holding metrics.", 'success');
+        document.getElementById('sim-pool-cap').textContent = "POOL: 90 SOL";
+        bars[5] = 65;
+        renderChart(bars, 'fair');
+        playSynth('pump');
+      } 
+      else if (step === 7) {
+        addSimLog("PACK POWER: Organic parabolic growth continues safely!", 'gold');
+        document.getElementById('sim-pool-cap').textContent = "POOL: 140 SOL";
+        bars[6] = 78;
+        bars[7] = 85;
+        bars[8] = 92;
+        bars[9] = 100;
+        renderChart(bars, 'fair');
+        playSynth('pump');
+        
+        // Show overlay feedback
+        document.getElementById('sim-overlay-icon').textContent = "🐕";
+        document.getElementById('sim-overlay-title').textContent = "PACK VICTORY!";
+        document.getElementById('sim-overlay-desc').textContent = "Distributed ownership held the line. Liquidity is healthy and safe from predatory dumps.";
+        document.getElementById('sim-overlay-title').className = "text-lg font-bold uppercase tracking-widest font-mono text-packGreen";
+        document.getElementById('sim-feedback-overlay').classList.remove('hidden');
+        
+        clearInterval(interval);
+        resetSimButtons();
+      }
+    }, 1200);
+  }
+
+  function resetSimButtons() {
+    simulationActive = false;
+    const simVampBtn = document.getElementById('sim-vamp-btn');
+    const simFairBtn = document.getElementById('sim-fair-btn');
+    
+    simVampBtn.disabled = false;
+    simFairBtn.disabled = false;
+    simVampBtn.classList.remove('opacity-50');
+    simFairBtn.classList.remove('opacity-50');
+  }
+
+  // Pre-load simulator warning defaults on system startup
+  window.onload = function() {
+    updateDangerMeter(65);
+  };
+</script>
+</body>
+</html>
